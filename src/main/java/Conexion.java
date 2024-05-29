@@ -4,27 +4,14 @@ import java.sql.SQLException;
 
     public class Conexion {
 
+        public class DatabaseConnection {
+            private static final String URL = "jdbc:mysql://localhost:3309/basededatosempresa?allowPublicKeyRetrieval=true";
+            private static final String USER = "root";
+            private static final String PASSWORD = "1234";
 
-        private static final String CONTROLADOR = "com.mysql.jdbc.Driver";
-        private static final String URL = "jdbc:mysql://localhost:3309/basededatosempresa?allowPublicKeyRetrieval=true";
-        private static final String USUARIO = "root";
-        private static final String CLAVE = "1234";
-
-        public static Connection conectar() {
-            Connection conexion = null;
-            try {
-                conexion = DriverManager.getConnection(URL, USUARIO, CLAVE);
-                System.out.println("Conexión OK");
-            } catch (SQLException e) {
-                System.out.println("Error en la conexión");
-                e.printStackTrace();
+            public static Connection getConnection() throws SQLException {
+                return DriverManager.getConnection(URL, USER, PASSWORD);
             }
-            return conexion;
         }
-
-
-        public static Connection getConnection() {
-
-            return null;
-        }}
+    }
 
